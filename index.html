@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science and Fun</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #0b0b0b;
+            overflow: hidden;
+        }
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        /* Custom Header jo bilkul website ke dark theme se match karta hai */
+        .top-header {
+            background: #0b0b0b;
+            color: #ffffff;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #1f1f1f;
+            min-height: 70px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 100;
+        }
+        .brand-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-info img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f59e0b;
+        }
+        .brand-text h1 {
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
+        }
+        .brand-text span {
+            font-size: 10px;
+            color: #9ca3af;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+        /* Iframe Container - Negative margin ki wajah se original header upar hide ho jayega */
+        .iframe-container {
+            flex-grow: 1;
+            width: 100%;
+            background: #0b0b0b;
+            position: relative;
+            margin-top: -70px; 
+            z-index: 1;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100% + 70px);
+            border: none;
+            display: block;
+        }
+        /* Footer Branding */
+        .footer-credit {
+            background: #121212;
+            color: #9ca3af;
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            border-top: 1px solid #1f1f1f;
+            min-height: 35px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .popup-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .popup-box {
+            background: #18181b;
+            width: 90%;
+            max-width: 380px;
+            padding: 30px 20px 25px 20px;
+            border-radius: 14px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border: 1px solid #27272a;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .popup-overlay.show .popup-box {
+            transform: scale(1);
+        }
+        .close-icon {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 30px;
+            height: 30px;
+            background: #27272a;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .close-icon:hover {
+            background: #ef4444;
+            transform: scale(1.1);
+        }
+        .popup-box h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #f59e0b;
+        }
+        .popup-box p {
+            font-size: 14px;
+            color: #a1a1aa;
+            margin-bottom: 20px;
+        }
+        .popup-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+        }
+        .telegram-btn {
+            background-color: #0088cc;
+            color: white;
+        }
+        .telegram-btn:hover {
+            background-color: #0077b5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <button class="close-icon" onclick="closePopup()">✕</button>
+            <h2>Join Our Updates</h2>
+            <p>Important links ke liye hamare official channel ko join karein!</p>
+            
+            <a href="https://whatsapp.com/channel/0029Vb6FhReEquiLz1jNH00o" target="_blank" class="popup-btn whatsapp-btn">
+                Join WhatsApp Channel
+            </a>
+            
+            <a href="https://t.me/+cw7TRotEzcczNThl" target="_blank" class="popup-btn telegram-btn">
+                Join Telegram Group
+            </a>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Top Custom Header -->
+        <header class="top-header">
+            <div class="brand-info">
+                <img src="https://i.postimg.cc/2yf3sPqb/IMG-20260731-232914-129.jpg" alt="Logo">
+                <div class="brand-text">
+                    <h1>SCIENCE AND FUN</h1>
+                    <span>POWERED BY MADXROHITBIHAR</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Proxy Website Area -->
+        <div class="iframe-container">
+            <iframe src="https://scienceandfun.studybeepro.site/" allowfullscreen></iframe>
+        </div>
+
+        <!-- Footer Developer Credit -->
+        <footer class="footer-credit">
+            Developer By MedxrohitBihar 2026
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('popupOverlay').classList.add('show');
+            }, 3000);
+        });
+
+        function closePopup() {
+            document.getElementById('popupOverlay').classList.remove('show');
+        }
+    </script>
+
+</body>
+</html>
