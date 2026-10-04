@@ -14,7 +14,7 @@
             width: 100%;
             height: 100%;
             font-family: Arial, sans-serif;
-            background-color: #0b0b0b;
+            background-color: #121212;
             overflow: hidden;
         }
         .app-container {
@@ -24,58 +24,54 @@
             height: 100vh;
             position: relative;
         }
-        /* Custom Header jo bilkul website ke dark theme se match karta hai */
+        /* Top Branding Header */
         .top-header {
-            background: #0b0b0b;
-            color: #ffffff;
+            background: #1e293b;
+            color: white;
             padding: 12px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #1f1f1f;
-            min-height: 70px;
+            border-bottom: 2px solid #334155;
+            min-height: 65px;
             flex-shrink: 0;
-            position: relative;
             z-index: 100;
         }
         .brand-info {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
         .brand-info img {
             width: 42px;
             height: 42px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #f59e0b;
+            border: 2px solid #38bdf8;
         }
         .brand-text h1 {
-            font-size: 16px;
-            color: #ffffff;
-            font-weight: 700;
-            letter-spacing: 0.8px;
-            line-height: 1.2;
-        }
-        .brand-text span {
-            font-size: 10px;
-            color: #9ca3af;
+            font-size: 19px;
+            color: #f8fafc;
             font-weight: 600;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
         }
-        /* Iframe Container - Negative margin ki wajah se original header upar hide ho jayega */
+        .developer-credit {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        /* Iframe Container */
         .iframe-container {
             flex-grow: 1;
             width: 100%;
-            background: #0b0b0b;
+            background: #121212;
             position: relative;
-            margin-top: -70px; 
-            z-index: 1;
+            overflow: hidden;
         }
         iframe {
             width: 100%;
-            height: calc(100% + 70px);
+            height: calc(100% + 65px);
+            margin-top: -65px;
             border: none;
             display: block;
         }
@@ -87,7 +83,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.75);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -102,15 +98,15 @@
             visibility: visible;
         }
         .popup-box {
-            background: #18181b;
+            background: #1e293b;
             width: 90%;
             max-width: 380px;
             padding: 30px 20px 25px 20px;
             border-radius: 14px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            border: 1px solid #27272a;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            border: 2px solid #334155;
             text-align: center;
-            color: #ffffff;
+            color: #f8fafc;
             position: relative;
             transform: scale(0.8);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -124,8 +120,8 @@
             right: 12px;
             width: 30px;
             height: 30px;
-            background: #27272a;
-            color: #ffffff;
+            background: #334155;
+            color: #f8fafc;
             border: none;
             border-radius: 50%;
             font-size: 16px;
@@ -143,11 +139,11 @@
         .popup-box h2 {
             font-size: 20px;
             margin-bottom: 8px;
-            color: #f59e0b;
+            color: #38bdf8;
         }
         .popup-box p {
             font-size: 14px;
-            color: #a1a1aa;
+            color: #94a3b8;
             margin-bottom: 20px;
         }
         .popup-btn {
@@ -202,8 +198,8 @@
             <div class="brand-info">
                 <img src="https://i.postimg.cc/2yf3sPqb/IMG-20260731-232914-129.jpg" alt="Logo">
                 <div class="brand-text">
-                    <h1>SCIENCE AND FUN</h1>
-                    <span>POWERED BY MADXROHITBIHAR</span>
+                    <h1>Science and Fun</h1>
+                    <div class="developer-credit">Developer By MedxrohitBihar</div>
                 </div>
             </div>
         </header>
